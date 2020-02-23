@@ -1,22 +1,17 @@
 import React from 'react';
 import './App.css';
 import { Remarkable } from 'remarkable';
-import DownloadButton from './DownloadButton';
-import PlainButton from './PlainButton';
+import {download, plain, pdf} from './Buttons';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.state = { value: 'Hello, **world**!' };
-    this.DownloadButtonElement = React.createRef();
-    this.PlainButtonElement = React.createRef();
   }
 
   handleChange(e) {
     this.setState({ value: e.target.value });
-    this.DownloadButtonElement.current.updateMarkdown(e.target.value);
-    this.PlainButtonElement.current.updateMarkdown(e.target.value);
   }
 
   getRawMarkup() {
@@ -37,8 +32,15 @@ class App extends React.Component {
           defaultValue={this.state.value}
         />
         <div className="Buttons">
-          <DownloadButton markdown={this.state.value} ref={this.DownloadButtonElement} />
-          <PlainButton markdown={this.state.value} ref={this.PlainButtonElement} />
+          <div className="DownloadButton">
+            <button type="button" onClick={() => download(this.state.value)}>Download Markdown</button>
+          </div>
+          <div className="PlainButton">
+            <button type="button" onClick={() => plain(this.state.value)}>Plain Markdown</button>
+          </div>
+          <div className="DownloadPDF">
+          <button type="button" onClick={() => pdf(this.state.value)}>Download PDF</button>
+          </div>
         </div>
         <h3>Output</h3>
         <div
