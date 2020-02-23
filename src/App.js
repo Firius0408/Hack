@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { Remarkable } from 'remarkable';
 import DownloadButton from './DownloadButton';
+import PlainButton from './PlainButton';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,11 +10,13 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.state = { value: 'Hello, **world**!' };
     this.DownloadButtonElement = React.createRef();
+    this.PlainButtonElement = React.createRef();
   }
 
   handleChange(e) {
     this.setState({ value: e.target.value });
     this.DownloadButtonElement.current.updateMarkdown(e.target.value);
+    this.PlainButtonElement.current.updateMarkdown(e.target.value);
   }
 
   getRawMarkup() {
@@ -35,6 +38,7 @@ class App extends React.Component {
         />
         <div className="Buttons">
           <DownloadButton markdown={this.state.value} ref={this.DownloadButtonElement} />
+          <PlainButton markdown={this.state.value} ref={this.PlainButtonElement} />
         </div>
         <h3>Output</h3>
         <div
