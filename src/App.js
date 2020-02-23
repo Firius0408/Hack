@@ -1,17 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Remarkable } from 'remarkable';
+import DownloadButton from './DownloadButton';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.state = { value: 'Hello, **world**!' };
+    this.DownloadButtonElement = React.createRef();
   }
 
   handleChange(e) {
     this.setState({ value: e.target.value });
+    this.DownloadButtonElement.current.updateMarkdown(e.target.value);
   }
 
   getRawMarkup() {
@@ -31,6 +33,9 @@ class App extends React.Component {
           onChange={this.handleChange}
           defaultValue={this.state.value}
         />
+        <div className="Buttons">
+          <DownloadButton markdown={this.state.value} ref={this.DownloadButtonElement} />
+        </div>
         <h3>Output</h3>
         <div
           className="content"
