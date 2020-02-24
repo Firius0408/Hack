@@ -1,5 +1,5 @@
 ## Inspiration
-We saw Markdown as a practical and simple way of quickly marking up text. Despite showing up almost everywhere (for example, on Github and Devpost, there are only a few technologies dedicated to editing Markdown in an easy manner.
+We saw Markdown as a practical and simple way of quickly marking up text. Despite showing up almost everywhere (i.e. Github and Devpost), there are only a few technologies dedicated to editing Markdown in an easy manner.
 
 ## What it does
 Major Markdown is a space-themed online text editor that has everything you would want a Markdown text editor to have. The most noticeable feature is the live preview, in which the user input is immediately translated into HTML and displayed on the screen, which helps users see exactly how their marked up text looks. Additional features include previewing saved `.md` files, saving and viewing raw `.md` files, and saving the Markdown as `.pdf` files.
