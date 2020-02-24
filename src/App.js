@@ -5,13 +5,24 @@ import { download, plain, pdf } from './Buttons';
 import Editor from './Editor.js';
 import Preview from './Preview.js';
 
+const defaultText = `# Lorem ipsum
+
+[Lorem ipsum dolor sit](https://en.wikipedia.org/wiki/Lorem_ipsum), amet consectetur adipisicing elit.
+
+## Nesciunt consequuntur
+
+Nesciunt consequuntur facilis assumenda, neque eveniet repellat laboriosam reprehenderit?
+1. Facere architecto
+2. Asperiores consequatur
+3. itaque harum illo ex impedit tenetur voluptate placeat iure`;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
     this.resetFile = this.resetFile.bind(this);
-    this.state = { value: 'Hello, **world**!' };
+    this.state = { value: defaultText };
     this.getRawMarkup = this.getRawMarkup.bind(this);
   }
 
@@ -57,7 +68,8 @@ class App extends React.Component {
     return (
       <div className="container">
         <header>
-          <h1>Title</h1>
+          <img src="./logo.svg" alt="log"/>
+          <h1>Major Markdown</h1>
         </header>
         <div className="main-container">
           <Editor
@@ -65,18 +77,18 @@ class App extends React.Component {
             handleChange={this.handleChange}
           />
           <div className="button-list">
-            <div className="DownloadButton">
-              <button type="button" onClick={() => download(this.state.value)}>Download Markdown</button>
+            <div className="UploadFile">
+              <input id="upload" type="file" onChange={this.uploadFile} onClick={this.resetFile} hidden/>
+              <button type="button" onClick={() => document.getElementById("upload").click()}>Upload File</button>
             </div>
             <div className="PlainButton">
               <button type="button" onClick={() => plain(this.state.value)}>Plain Markdown</button>
             </div>
-            <div className="DownloadPDF">
-              <button type="button" onClick={() => pdf(this.getRawMarkup())}>Download PDF</button>
+            <div className="DownloadButton">
+              <button type="button" onClick={() => download(this.state.value)}>Download (.md)</button>
             </div>
-            <div className="UploadFile">
-              <input id="upload" type="file" onChange={this.uploadFile} onClick={this.resetFile} hidden/>
-              <button type="button" onClick={() => document.getElementById("upload").click()}>Upload File</button>
+            <div className="DownloadPDF">
+              <button type="button" onClick={() => pdf(this.getRawMarkup())}>Download (.pdf)</button>
             </div>
           </div>
           <Preview

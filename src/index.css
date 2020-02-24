@@ -7,8 +7,6 @@
 }
 
 :root {
-  --header-height: 30%;
-  --button-color: #7aa4ce;
   --button-scale: 1.25rem;
   --editor-scale: 1.75rem;
   --preview-scale: 1.25rem;
@@ -36,6 +34,16 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+header img {
+  height: 2.5rem;
+  padding-right: 1rem;
 }
 
 header h1 {
@@ -127,6 +135,14 @@ header h1 {
 
   .content img {
     max-width: 100%;
+  }
+
+  .content a {
+    color: lightblue;
+  }
+
+  .content a:focus {
+    color: violet;
   }
 
   .text {
