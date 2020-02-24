@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import { Remarkable } from 'remarkable';
 import { download, plain, pdf } from './Buttons';
-import Editor from './Editor.js';
-import Preview from './Preview.js';
+import Editor from './Editor';
+import Preview from './Preview';
 
 class App extends React.Component {
   constructor(props) {
