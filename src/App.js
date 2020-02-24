@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import { Remarkable } from 'remarkable';
 import { download, plain, pdf } from './Buttons';
+import Editor from './Editor.js';
+import Preview from './Preview.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,10 +12,11 @@ class App extends React.Component {
     this.uploadFile = this.uploadFile.bind(this);
     this.resetFile = this.resetFile.bind(this);
     this.state = { value: 'Hello, **world**!' };
+    this.getRawMarkup = this.getRawMarkup.bind(this);
   }
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
+  handleChange(event) {
+    this.setState({ value: event.target.value });
   }
 
   getRawMarkup() {
@@ -52,35 +55,33 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="MarkdownEditor">
-        <h3>Input</h3>
-        <label htmlFor="markdown-content">
-          Enter some markdown
-        </label>
-        <textarea
-          id="markdown-content"
-          onChange={this.handleChange}
-          defaultValue={this.state.value}
-        />
-        <div className="Buttons">
-          <div className="DownloadButton">
-            <button type="button" onClick={() => download(this.state.value)}>Download Markdown</button>
+      <div className="container">
+        <header>
+          <h1>Title</h1>
+        </header>
+        <div className="main-container">
+          <Editor
+            defaultValue={this.state.value}
+            handleChange={this.handleChange}
+          />
+          <div className="button-list">
+            <div className="DownloadButton">
+              <button type="button" onClick={() => download(this.state.value)}>Download Markdown</button>
+            </div>
+            <div className="PlainButton">
+              <button type="button" onClick={() => plain(this.state.value)}>Plain Markdown</button>
+            </div>
+            <div className="DownloadPDF">
+              <button type="button" onClick={() => pdf(this.getRawMarkup())}>Download PDF</button>
+            </div>
+            <div className="UploadFile">
+              <input type="file" onChange={this.uploadFile} onClick={this.resetFile} />
+            </div>
           </div>
-          <div className="PlainButton">
-            <button type="button" onClick={() => plain(this.state.value)}>Plain Markdown</button>
-          </div>
-          <div className="DownloadPDF">
-            <button type="button" onClick={() => pdf(this.getRawMarkup())}>Download PDF</button>
-          </div>
-          <div className="UploadFile">
-            <input type="file" onChange={this.uploadFile} onClick={this.resetFile} />
-          </div>
+          <Preview
+            getRawMarkup={this.getRawMarkup}
+          />
         </div>
-        <h3>Output</h3>
-        <div
-          className="content"
-          dangerouslySetInnerHTML={this.getRawMarkup()}
-        />
       </div>
     );
   }
