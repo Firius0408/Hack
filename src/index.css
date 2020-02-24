@@ -10,13 +10,13 @@
   --header-height: 30%;
   --button-color: #7aa4ce;
   --button-scale: 1.25rem;
-  --editor-scale: 1.5rem;
+  --editor-scale: 1.75rem;
   --preview-scale: 1.25rem;
   --text-width: 40%;
 }
 
 body {
-  /* background: url('./background4.png'); */
+  background: url('./giphy.gif');
   background-size: cover;
   background-color: #7aa4ce;
   display: flex;
@@ -69,8 +69,8 @@ header h1 {
 
   textarea:focus {
     box-shadow:
-    0 10px 20px rgba(0,0,0,0.27),
-    0 6px 6px rgba(0,0,0,0.36);
+    0 0 40px rgba(0,0,255,0.27),
+    0 0 12px rgba(0,0,255,0.36);
   }
 
 .main-container .button-list {
@@ -86,8 +86,9 @@ header h1 {
   button {
     font-size: var(--button-scale);
     width: 100%;
-    padding: calc(0.3 * var(--button-scale)) var(--button-scale);
-    background-color: var(--button-color);
+    padding: calc(0.5 * var(--button-scale)) var(--button-scale);
+    margin: calc(0.25 * var(--button-scale));
+    background-color: rgba(0,0,0,0);
     color: whitesmoke;
     border: solid 2px whitesmoke;
     border-radius: 2px;
@@ -98,7 +99,7 @@ header h1 {
   }
 
   button:hover {
-    color: var(--button-color);
+    color: black;
     background-color: whitesmoke;
     cursor: pointer;
   }
@@ -130,13 +131,15 @@ header h1 {
 
   .text {
     background-color: whitesmoke;
-    border: solid 1px gray;
+    border: solid 1px black;
     border-radius: 1px;
     box-shadow:
-    0 10px 20px rgba(0,0,0,0.09),
-    0 6px 6px rgba(0,0,0,0.12);
+    0 0 20px rgba(0,0,255,0.09),
+    0 0 6px rgba(0,0,255,0.12);
     flex-grow: 1;
     padding: 1rem;
+    background-color: rgba(0,0,0,0.75);
+    color: white;
   }
 
   .text::selection {
@@ -148,7 +151,6 @@ header h1 {
   }
 
 .header {
-  text-align: right;
   font-size: calc(1.25 * var(--preview-scale));
   user-select: none;
   color: whitesmoke;

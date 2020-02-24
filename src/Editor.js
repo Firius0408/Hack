@@ -13,6 +13,7 @@ class Editor extends React.Component {
                     onChange={this.props.handleChange}
                     defaultValue={this.props.defaultValue}
                     notab="notab"
+                    placeholder="> ..."
                 />
             </div>
         );
