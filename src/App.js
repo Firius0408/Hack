@@ -2,16 +2,19 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Remarkable } from 'remarkable';
+import Editor from './Editor.js';
+import Preview from './Preview.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.state = { value: 'Hello, **world**!' };
+    this.getRawMarkup = this.getRawMarkup.bind(this);
+    this.state = { value: '*Alvin* **Nguyen**' };
   }
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
+  handleChange(event) {
+    this.setState({ value: event.target.value });
   }
 
   getRawMarkup() {
@@ -21,21 +24,36 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="MarkdownEditor">
-        <h3>Input</h3>
-        <label htmlFor="markdown-content">
-          Enter some markdown
-        </label>
-        <textarea
-          id="markdown-content"
-          onChange={this.handleChange}
-          defaultValue={this.state.value}
-        />
-        <h3>Output</h3>
-        <div
-          className="content"
-          dangerouslySetInnerHTML={this.getRawMarkup()}
-        />
+      <div className="container">
+        <header>
+          <h1>Title</h1>
+        </header>
+        <div className="main-container">
+          <Editor
+            defaultValue={this.state.value}
+            handleChange={this.handleChange}
+          />
+          <div className="button-list">
+            <div>
+              <button>Placeholder 1</button>
+            </div>
+            <div>
+              <button>Placeholder 2</button>
+            </div>
+            <div>
+              <button>Placeholder 3</button>
+            </div>
+            <div>
+              <button>Placeholder 4</button>
+            </div>
+            <div>
+              <button>Placeholder 5</button>
+            </div>
+          </div>
+          <Preview
+            getRawMarkup={this.getRawMarkup}
+          />
+        </div>
       </div>
     );
   }
