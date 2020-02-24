@@ -26,8 +26,4 @@ function pdf(html) {
     doc.output('dataurlnewwindow');
 }
 
-function upload(markdown) {
-
-}
-
-export { download, plain, pdf, upload };
+export { download, plain, pdf };
