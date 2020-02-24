@@ -75,7 +75,8 @@ class App extends React.Component {
               <button type="button" onClick={() => pdf(this.getRawMarkup())}>Download PDF</button>
             </div>
             <div className="UploadFile">
-              <input type="file" onChange={this.uploadFile} onClick={this.resetFile} />
+              <input id="upload" type="file" onChange={this.uploadFile} onClick={this.resetFile} hidden/>
+              <button type="button" onClick={() => document.getElementById("upload").click()}>Upload File</button>
             </div>
           </div>
           <Preview
