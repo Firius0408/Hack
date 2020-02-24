@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Remarkable } from 'remarkable';
-import {download, plain, pdf} from './Buttons';
+import {download, plain, pdf, upload} from './Buttons';
 
 class App extends React.Component {
   constructor(props) {
@@ -39,7 +39,10 @@ class App extends React.Component {
             <button type="button" onClick={() => plain(this.state.value)}>Plain Markdown</button>
           </div>
           <div className="DownloadPDF">
-          <button type="button" onClick={() => pdf(this.state.value)}>Download PDF</button>
+          <button type="button" onClick={() => pdf(this.getRawMarkup())}>Download PDF</button>
+          </div>
+          <div className="UploadFile">
+          <button type="button" onClick={() => upload(this.state.value)}>Upload File</button>
           </div>
         </div>
         <h3>Output</h3>
